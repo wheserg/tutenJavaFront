@@ -1,17 +1,13 @@
-import React, {useState, useEffect, ReactFragment} from "react";
+import React, {useState, useEffect} from "react";
 import API from '../api/api'
-import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import Spinner from 'react-bootstrap/Spinner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faExchangeAlt,faMoneyBill,faAddressBook } from '@fortawesome/free-solid-svg-icons'
+
 
 
 function Dashboard(props){
@@ -96,16 +92,13 @@ function Dashboard(props){
         setState(Object.assign({}, myState, estado));
     };
     const actualizaResultado = estado => {
-        console.log('actualizando estado')
-        console.log(estado)
         setResultado(Object.assign({}, Resultado, estado));
     };
     
     const calcularUtc = () => {
-            console.log(process.env.JAVA_SERVER)
             setLoading(true);
         
-            API.post(`http://localhost:8080/utc`, {
+            API.post(`utc`, {
                 dato1: myState.time,
                 dato2: myState.myUtc
             }).then((response) => {
